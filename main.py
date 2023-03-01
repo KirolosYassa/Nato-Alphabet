@@ -13,9 +13,16 @@ print(alphabet_code)
 
 
 # TODO 2. Create a list of the phonetic code words from a word that the user inputs.
-user_input = input("Enter a word?:  ")
-word = [letter.upper() for letter in user_input]
-print(word)
+def generate_code():
+    user_input = input("Enter a word?:  ").upper()
+    word = [letter for letter in user_input]
+    print(word)
+    try:
+        nato_code = [alphabet_code[letter] for letter in word]
+    except KeyError:
+        print("Sorry, Only letters in the alphabet format.")
+        generate_code()
+    else:
+        print(nato_code)
 
-nato_code = [alphabet_code[letter] for letter in word if letter in alphabet_code]
-print(nato_code)
+generate_code()
